@@ -25,8 +25,6 @@ Versions Used:
 
 * Create seed data of roles and facilities with command: rails db:seed
 
-* Create database with command: rails db:create
-
 * Run application with command: rails s
 
 * Run webpack parallelly (new tab) with command: ./bin/webpack-dev-server
