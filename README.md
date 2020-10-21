@@ -1,24 +1,32 @@
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a test application, consisting of a CRUD operation of User associated with Facilities
 
-Things you may want to cover:
+Versions Used:
 
-* Ruby version
+* Ruby version: 2.6.5
 
-* System dependencies
+* Rails Version: 6.0.3
 
-* Configuration
+ Steps to run application
 
-* Database creation
+* Clone application
 
-* Database initialization
+* Bundle install with command: bundle install
 
-* How to run the test suite
+* Yarn install with command: yarn install
 
-* Services (job queues, cache servers, search engines, etc.)
+* Configure database.yml
 
-* Deployment instructions
+* Create database with command: rails db:create
 
-* ...
+* Migrate database with command: rails db:migrate
+
+* Create seed data of roles and facilities with command: rails db:seed
+
+* Create database with command: rails db:create
+
+* Run application with command: rails s
+
+* Run webpack parallelly (new tab) with command: ./bin/webpack-dev-server
