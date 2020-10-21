@@ -1,0 +1,7 @@
+<h3>User Details</h3>
+<p><b>Name:</b> <%= @user.full_name %></p>
+<p><b>Email:</b> <%= @user.email %></p>
+<p><b>DOB:</b> <%= @user.dob %></p>
+<p><b>Role:</b> <%= @user.role.name %></p>
+<p><b>Facilities: </b> <%= @user.facilities.pluck(:name).join(', ') %></p>
+<%= link_to 'Back', users_path %>

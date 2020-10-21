@@ -1,0 +1,69 @@
+<% if @user.errors.any? %>
+  <h4>Issues with form submit</h4>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for @user, url: url, method: http_method.to_sym do |f| %>
+  <div class="form-row">
+    <!--  First Name-->
+    <div class="form-group col-md-6">
+      <%= f.label :first_name, 'First Name' %>
+      <%= f.text_field :first_name, placeholder: 'First Name', required: true, class: 'form-control' %>
+    </div>
+
+    <!--  Last Name-->
+    <div class="form-group col-md-6">
+      <%= f.label :last_name, 'Last Name' %>
+      <%= f.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>
+    </div>
+
+    <!--  Email-->
+    <div class="form-group col-md-6">
+      <%= f.label :email, 'Email' %>
+      <%= f.email_field :email, placeholder: 'Email', class: 'form-control' %>
+    </div>
+    <!--Date of Birth-->
+    <div class="form-group col-md-6">
+      <%= f.label :dob, 'DOB' %>
+      <%= f.date_field :dob, placeholder: 'dob', class: 'form-control' %>
+    </div>
+    <!--Gender-->
+    <div class="form-group col-md-6">
+      <label class="col-form-label">Gender</label><br>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :gender, 'male', class: 'form-check-input' %>
+        <%= f.label :gender, 'Male', value: 'male', class: 'form-check-label' %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :gender, 'female', class: 'form-check-input' %>
+        <%= f.label :gender, 'Female', value: 'female', class: 'form-check-label' %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :gender, 'other', class: 'form-check-input' %>
+        <%= f.label :gender, 'Other', value: 'other', class: 'form-check-label' %>
+      </div>
+    </div>
+    <!--Role-->
+    <div class="form-group col-md-6">
+      <%= f.label :role_id, 'Role' %>
+      <%= f.select :role_id, options_for_select(@roles.map { |role| [role.name, role.id] }, @user.role&.id), {include_blank: 'Select Role'}, {class: 'form-control'} %>
+    </div>
+    <!--  Facilities-->
+    <div class="form-group col-md-6">
+      <%= f.label :facility, 'Facility' %>
+      <%= f.select :facility_ids, options_for_select(@facilities.map { |fc| [fc.name, fc.id] }, @user.facility_ids), {include_blank: 'Select Facilities'}, {multiple: true, class: 'form-control'} %>
+    </div>
+    <div class="col-md-12">
+      <% if http_method.eql?('post') %>
+        <%= f.submit 'Save', class: 'btn btn-primary' %>
+        <%= f.submit 'Save & Copy', class: 'btn btn-success' unless @record_copied.presence %>
+      <% else %>
+        <%= f.submit 'Update', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+<% end %>
+</div>

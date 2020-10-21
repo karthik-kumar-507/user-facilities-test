@@ -1,0 +1,38 @@
+<div class="card">
+  <h3 class="card-header">
+    Users Listing
+    <%= link_to 'Add User', new_user_path, class: 'btn btn-sm btn-success float-sm-right' %>
+  </h3>
+  <div class="card-body">
+    <table class="table">
+      <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Role</th>
+      <th>DOB</th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <% if @users.empty? %>
+        <tr>
+          <td colspan="5" class="text-center">Users not available</td>
+        </tr>
+      <% else %>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.full_name, user_path(user.id) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role.name %></td>
+            <td><%= user.dob %></td>
+            <td><%= link_to 'Edit', edit_user_path(user.id) %>
+              | <%= link_to 'Delete', user_path(user.id), method: :delete %></td>
+          </tr>
+        <% end %>
+      <% end %>
+      </tbody>
+
+    </table>
+
+  </div>
+</div>
+
